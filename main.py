@@ -3,13 +3,13 @@ import sys
 assert sys.version_info >= (3,9), "This script requires at least Python 3.9"
 
 world = {
-  "uuid": "216ACD94-C70D-42CE-80F1-FA90A0D7F747",
-  "name": "Zork",
+  "uuid": "18AFFA46-FCA9-4D4C-AF86-4590ACFB656A",
+  "name": "Zork 1",
   "creator": "Twine",
   "creatorVersion": "2.3.14",
   "schemaName": "Harlowe 3 to JSON",
   "schemaVersion": "0.0.6",
-  "createdAtMs": 1630601285901,
+  "createdAtMs": 1631058560783,
   "passages": [
     {
       "name": "West of House",
@@ -40,7 +40,7 @@ world = {
       "name": "North of House",
       "tags": "",
       "id": "2",
-      "text": "You are facing the north side of a white house. There is no door here, and all the windows are barred.\n\n[[WEST->West of House]]\n[[EAST->East of House]]\n[[NORTH->Forest]]",
+      "text": "You are facing the north side of a white house. There is no door here, and all the windows are barred. \n[[WEST->West of House]] \n[[EAST->East of House]]\n[[NORTH->Forest]]",
       "links": [
         {
           "linkText": "WEST",
@@ -65,7 +65,7 @@ world = {
       "name": "South of House",
       "tags": "",
       "id": "3",
-      "text": "You are facing the south side of a white house. There is no door here, and all the windows are barred.\n\n[[WEST->West of House]]\n[[EAST->East of House]]\n[[SOUTH->Forest]]",
+      "text": "You are facing the south side of a white house. There is no door here, and all the windows are barred. \n[[WEST->West of House]] \n[[EAST->East of House]] \n[[SOUTH->Forest]]",
       "links": [
         {
           "linkText": "WEST",
@@ -90,7 +90,7 @@ world = {
       "name": "Forest",
       "tags": "",
       "id": "4",
-      "text": "This is a forest, with trees in all directions around you.\n\n[[NORTH->Sunlit Forest]]\n[[EAST->Forest]]\n[[SOUTH->Forest]]\n[[WEST->Forest]]",
+      "text": "This is a forest, with trees in all directions around you.\n[[NORTH->Sunlit Forest]]\n[[EAST->Forest]] \n[[SOUTH->Forest]] \n[[WEST->Forest]]",
       "links": [
         {
           "linkText": "NORTH",
@@ -120,7 +120,7 @@ world = {
       "name": "East of House",
       "tags": "",
       "id": "5",
-      "text": "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n\n[[NORTH->North of House]]\n[[SOUTH->South of House]]\n[[EAST->Sunlit Forest]]\n[[WEST->Kitchen]]\n[[ENTER->Kitchen]]",
+      "text": "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n[[NORTH->North of House]] \n[[SOUTH->South of House]] \n[[EAST->Sunlit Forest]] \n[[WEST->Kitchen]]\n[[ENTER->Kitchen]]]",
       "links": [
         {
           "linkText": "NORTH",
@@ -149,13 +149,13 @@ world = {
         }
       ],
       "hooks": [],
-      "cleanText": "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar."
+      "cleanText": "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n \n \n \n\n]"
     },
     {
       "name": "Sunlit Forest",
       "tags": "",
       "id": "6",
-      "text": "This is a dimly lit forest, with large trees all around. One particularly large tree with some low branches stands here.\n\n[[NORTH->Forest]]\n[[SOUTH->Forest]]\n[[EAST->Forest]]\n[[WEST->East of House]]\n[[UP->Tree]]",
+      "text": "This is a dimply lit forest, with large trees all around. One particularly large tree with some low branches stands here. \n[[NORTH->Forest]] \n[[SOUTH->Forest]]\n[[EAST->Forest]] \n[[WEST->East of House]] \n[[UP->Tree]]",
       "links": [
         {
           "linkText": "NORTH",
@@ -184,13 +184,13 @@ world = {
         }
       ],
       "hooks": [],
-      "cleanText": "This is a dimly lit forest, with large trees all around. One particularly large tree with some low branches stands here."
+      "cleanText": "This is a dimply lit forest, with large trees all around. One particularly large tree with some low branches stands here."
     },
     {
       "name": "Kitchen",
       "tags": "",
       "id": "7",
-      "text": "You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is open.\n\n[[EAST->East of House]]",
+      "text": "You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is open.\n[[EAST->East of House]]",
       "links": [
         {
           "linkText": "EAST",
@@ -205,7 +205,7 @@ world = {
       "name": "Tree",
       "tags": "",
       "id": "8",
-      "text": "You are about 10 feet above the ground nestled among some large branches. The nearest branch above you is above your reach. Beside you on the branch is a small bird's nest.\n\n[[DOWN->Sunlit Forest]]",
+      "text": "You are about 10 feet above the ground nestled among some large branches. The nearest branch above you is above your reach. Beside you on the branch is a small bird's nest.\n[[DOWN->Sunlit Forest]]",
       "links": [
         {
           "linkText": "DOWN",
@@ -218,10 +218,8 @@ world = {
     }
   ]
 }
-
-
+  
 # ----------------------------------------------------------------
-
 def find_current_location(location_label):
 	if "passages" in world:
 		for passage in world["passages"]:
@@ -231,10 +229,9 @@ def find_current_location(location_label):
 
 # ----------------------------------------------------------------
 
-def render(current_location, score, moves):
-	if "name" in current_location and "cleanText" in current_location:
-		print("You are at the " + str(current_location["name"]))
-		print(current_location["cleanText"] + "\n")
+def render(current_location):
+		print("You are at the " + current_location["name"])
+		print(current_location["cleanText"])
 
 def get_input():
 	response = input("What do you want to do? ")
@@ -244,7 +241,7 @@ def get_input():
 def update(current_location, location_label, response):
 	if response == "":
 		return location_label
-	if "links" in current_location:
+
 		for link in current_location["links"]:
 			if link["linkText"] == response:
 				return link["passageName"]
@@ -265,7 +262,7 @@ while True:
 		break
 	location_label = update(current_location, location_label, response)
 	current_location = find_current_location(location_label)
-	render(current_location, score, moves)
+	render(current_location)
 	response = get_input()
 
 
